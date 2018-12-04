@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="C&C++,">
 
 
 
@@ -95,13 +95,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="3703liu blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/11/index.html">
+<meta name="description" content="0 引言&amp;emsp;&amp;emsp;最近在项目中碰到C和C++中内存分配导致程序出现错误的问题，对Linux内存管理一直想好好研究一下，看过一些简单的介绍。但一直不太明白，先从C语言的内存的管理和分配开始看吧，记录一下中间学到的东西。中间看到过一片Hack the Virtual Memory: malloc, the heap &amp;amp; the program break的文章，讲解的较为详细，也">
+<meta name="keywords" content="C&amp;C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux下关于C&amp;C++的内存分配">
+<meta property="og:url" content="http://yoursite.com/2018/11/28/Linux下C语言对于内存的分配/index.html">
 <meta property="og:site_name" content="3703liu blog">
+<meta property="og:description" content="0 引言&amp;emsp;&amp;emsp;最近在项目中碰到C和C++中内存分配导致程序出现错误的问题，对Linux内存管理一直想好好研究一下，看过一些简单的介绍。但一直不太明白，先从C语言的内存的管理和分配开始看吧，记录一下中间学到的东西。中间看到过一片Hack the Virtual Memory: malloc, the heap &amp;amp; the program break的文章，讲解的较为详细，也">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-03T02:13:21.023Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="3703liu blog">
+<meta name="twitter:title" content="Linux下关于C&amp;C++的内存分配">
+<meta name="twitter:description" content="0 引言&amp;emsp;&amp;emsp;最近在项目中碰到C和C++中内存分配导致程序出现错误的问题，对Linux内存管理一直想好好研究一下，看过一些简单的介绍。但一直不太明白，先从C语言的内存的管理和分配开始看吧，记录一下中间学到的东西。中间看到过一片Hack the Virtual Memory: malloc, the heap &amp;amp; the program break的文章，讲解的较为详细，也">
 
 
 
@@ -130,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/11/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/28/Linux下C语言对于内存的分配/">
 
 
 
 
 
-  <title>归档 | 3703liu blog</title>
+  <title>Linux下关于C&C++的内存分配 | 3703liu blog</title>
   
 
 
@@ -161,7 +166,7 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -303,107 +308,203 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 3 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year motion-element" id="archive-year-2018">2018</h2>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/28/Linux下C语言对于内存的分配/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="3703liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="3703liu blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/11/28/Linux下C语言对于内存的分配/" itemprop="url">
-              
-                <span itemprop="name">Linux下关于C&C++的内存分配</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Linux下关于C&C++的内存分配</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-28T22:03:00+08:00" content="2018-11-28">
-          11-28
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-28T22:03:00+08:00">
+                2018-11-28
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程语言/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/28/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-28T09:25:00+08:00" content="2018-11-28">
-          11-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>&emsp;&emsp;最近在项目中碰到C和C++中内存分配导致程序出现错误的问题，对Linux内存管理一直想好好研究一下，看过一些简单的介绍。但一直不太明白，先从C语言的内存的管理和分配开始看吧，记录一下中间学到的东西。中间看到过一片<a href="https://blog.holbertonschool.com/hack-the-virtual-memory-malloc-the-heap-the-program-break/" target="_blank" rel="noopener">Hack the Virtual Memory: malloc, the heap &amp; the program break</a>的文章，讲解的较为详细，也有具体的demo代码，对于内存的分配会有比较直观的理解。</p>
+<hr>
+<h2 id="1-内存的分配"><a href="#1-内存的分配" class="headerlink" title="1.内存的分配"></a>1.内存的分配</h2><h3 id="1-1-brk的分配方法"><a href="#1-1-brk的分配方法" class="headerlink" title="1.1 brk的分配方法"></a>1.1 brk的分配方法</h3><h3 id="1-2-mmap的分配方法"><a href="#1-2-mmap的分配方法" class="headerlink" title="1.2 mmap的分配方法"></a>1.2 mmap的分配方法</h3><h2 id="2-内存的数据结构"><a href="#2-内存的数据结构" class="headerlink" title="2.内存的数据结构"></a>2.内存的数据结构</h2><p>  &emsp;&emsp;内存在申请的时候，实际所分配的长度要比所申请的字节要长，mallloc 分配内存的时候，所返回的地址之前的16个字节，用来记录内存分配的相关信息，前八个字节用来记录上一个chunk是否被deallocate的信息，随后的八个字节记录本次分配的chunk size，且最后的bit用来作为flag，标记上一个chunk在分配时的相关标记。从gnu的malloc源码中，可以看到flag共有一下三种：<br>   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* size field is or'ed with PREV_INUSE when previous adjacent chunk in use */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PREV_INUSE 0x1</span></span><br><span class="line"><span class="comment">/* extract inuse bit of previous chunk */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> prev_inuse(p)       ((p)-&gt;mchunk_size &amp; PREV_INUSE)</span></span><br><span class="line"><span class="comment">/* size field is or'ed with IS_MMAPPED if the chunk was obtained with mmap() */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> IS_MMAPPED 0x2</span></span><br><span class="line"><span class="comment">/* check for mmap()'ed chunk */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> chunk_is_mmapped(p) ((p)-&gt;mchunk_size &amp; IS_MMAPPED)</span></span><br><span class="line"><span class="comment">/* size field is or'ed with NON_MAIN_ARENA if the chunk was obtained</span></span><br><span class="line"><span class="comment">from a non-main arena.  This is only set immediately before handing</span></span><br><span class="line"><span class="comment">the chunk to the user, if necessary.  */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NON_MAIN_ARENA 0x4</span></span><br><span class="line"><span class="comment">/* Check for chunk from main arena.  */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> chunk_main_arena(p) (((p)-&gt;mchunk_size &amp; NON_MAIN_ARENA) == 0)</span></span><br><span class="line"><span class="comment">/* Mark a chunk as not being on the main arena.  */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> set_non_main_arena(p) ((p)-&gt;mchunk_size |= NON_MAIN_ARENA)</span></span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;可以看到标记有三种，PREV_INUSE标记上个chunk是否INUSE，IS_MMAPPED标记当前chunk是否有mmap所分配的，还有一个NON_MAIN_ARENA，从注释看是标记当前chunk是否由非主分区分配，尚为明白其用意。</p>
+<h2 id="3-内存的释放"><a href="#3-内存的释放" class="headerlink" title="3.内存的释放"></a>3.内存的释放</h2><p> &emsp;&emsp;内存的释放C语言在释放内存的时候会对内存作check，内存检测出现问题的时候，会调用_libc_message,进而调用abort终止进程。对于内存的检查是比较底层的东西了，记录一下目前所了解到的相关内容。内存释放的时候会调用__libc_free (void *mem),相关的源码可以从<a href="https://code.woboq.org/userspace/glibc/malloc/malloc.c.html" target="_blank" rel="noopener"> malloc.c </a>中可以查看，大致过程为获取chunk指针，然后检测chunk是否为mmapped，如果是的话调整阈值，释放指针，如何调整阈值还不清楚，其后则是调用_int_free。</p>
+<p>&emsp;&emsp;_int_free函数源码较长，目前对函数的流程理解如下：</p>
+<ul>
+<li><p>检查chunk指针地址是否超过了可分配的内存空间的上限，以及内存是否对齐</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Little security check which won't hurt performance: the</span></span><br><span class="line"><span class="comment">    allocator never wrapps around at the end of the address space.</span></span><br><span class="line"><span class="comment">    Therefore we can exclude some size values which might appear</span></span><br><span class="line"><span class="comment">    here by accident or by "design" from some intruder.  */</span></span><br><span class="line"> <span class="keyword">if</span> (__builtin_expect ((<span class="keyword">uintptr_t</span>) p &gt; (<span class="keyword">uintptr_t</span>) -size, <span class="number">0</span>)</span><br><span class="line">     || __builtin_expect (misaligned_chunk (p), <span class="number">0</span>))</span><br><span class="line">   malloc_printerr (<span class="string">"free(): invalid pointer"</span>);</span><br><span class="line"> <span class="comment">/* We know that each chunk is at least MINSIZE bytes in size or a</span></span><br><span class="line"><span class="comment">    multiple of MALLOC_ALIGNMENT.  */</span></span><br><span class="line"> <span class="keyword">if</span> (__glibc_unlikely (size &lt; MINSIZE || !aligned_OK (size)))</span><br><span class="line">   malloc_printerr (<span class="string">"free(): invalid size"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>中间牵涉到fastbin操作，目前尚不明白</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> idx = fastbin_index(size);</span><br><span class="line">  fb = &amp;fastbin (av, idx);</span><br><span class="line">  <span class="comment">/* Atomically link P to its fastbin: P-&gt;FD = *FB; *FB = P;  */</span></span><br><span class="line">  mchunkptr old = fastbin_push_entry (fb, p);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查下个chunk是否已经为top block或者越过了av-&gt;top的边界(top尚不清楚具体含义，目前理解为内存页的最后一个chunk)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Lightweight tests: check whether the block is already the</span></span><br><span class="line"><span class="comment">     top block.  */</span></span><br><span class="line">  <span class="keyword">if</span> (__glibc_unlikely (p == av-&gt;top))</span><br><span class="line">    malloc_printerr (<span class="string">"double free or corruption (top)"</span>);</span><br><span class="line">  <span class="comment">/* Or whether the next chunk is beyond the boundaries of the arena.  */</span></span><br><span class="line">  <span class="keyword">if</span> (__builtin_expect (contiguous (av)</span><br><span class="line">                        &amp;&amp; (<span class="keyword">char</span> *) nextchunk</span><br><span class="line">                        &gt;= ((<span class="keyword">char</span> *) av-&gt;top + chunksize(av-&gt;top)), <span class="number">0</span>))</span><br><span class="line">      malloc_printerr (<span class="string">"double free or corruption (out)"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>根据下个chunk检查当前chunk INUSE的标记</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Or whether the block is actually not marked used.  */</span></span><br><span class="line">    <span class="keyword">if</span> (__glibc_unlikely (!prev_inuse(nextchunk)))</span><br><span class="line">      malloc_printerr (<span class="string">"double free or corruption (!prev)"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查下个chunk的长度</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nextsize = chunksize(nextchunk);</span><br><span class="line">  <span class="keyword">if</span> (__builtin_expect (chunksize_nomask (nextchunk) &lt;= <span class="number">2</span> * SIZE_SZ, <span class="number">0</span>)</span><br><span class="line">      || __builtin_expect (nextsize &gt;= av-&gt;system_mem, <span class="number">0</span>))</span><br><span class="line">    malloc_printerr (<span class="string">"free(): invalid next size (normal)"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果上个chunk没有在使用，将当前chunk与上个chunk合并，这里挪动了chunk_ptr</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* consolidate backward */</span></span><br><span class="line"><span class="keyword">if</span> (!prev_inuse(p)) &#123;</span><br><span class="line">  prevsize = prev_size (p);</span><br><span class="line">  size += prevsize;</span><br><span class="line">  p = chunk_at_offset(p, -((<span class="keyword">long</span>) prevsize));</span><br><span class="line">  <span class="keyword">if</span> (__glibc_unlikely (chunksize(p) != prevsize))</span><br><span class="line">    malloc_printerr (<span class="string">"corrupted size vs. prev_size while consolidating"</span>);</span><br><span class="line">  unlink_chunk (av, p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清除下个chunk INUSE的标记与下个chunk合并，较为复杂，尚未看明白</p>
+</li>
+<li>如果是mmap方式申请的内存，调用 munmap_chunk进行释放。</li>
+</ul>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C-C/" rel="tag"># C&C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/28/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/02/H264-编码原理/" rel="prev" title="H264 编码原理">
+                H264 编码原理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -411,6 +512,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -433,8 +538,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="3703liu">
           <p class="site-author-name" itemprop="name">3703liu</p>
@@ -494,6 +608,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-内存的分配"><span class="nav-number">1.1.</span> <span class="nav-text">1.内存的分配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-brk的分配方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 brk的分配方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-mmap的分配方法"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 mmap的分配方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-内存的数据结构"><span class="nav-number">1.2.</span> <span class="nav-text">2.内存的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-内存的释放"><span class="nav-number">1.3.</span> <span class="nav-text">3.内存的释放</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -616,11 +746,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
 
 
   
