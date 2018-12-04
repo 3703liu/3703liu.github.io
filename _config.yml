@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 3703liu blog
 subtitle:
 description:
 keywords:
-author: John Doe
-language:
+author: 3703liu
+language: zh-Hans
 timezone:
 
 # URL
@@ -82,3 +82,8 @@ deploy:
   repository: https://github.com/3703liu/3703liu.github.io.git
   branch: master
 
+
+# Security
+## 文章加密 hexo-blog-encrypt
+encrypt:
+    enable: true
